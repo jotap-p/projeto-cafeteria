@@ -192,63 +192,17 @@ export const produtos = [
   
     {
       id: 21,
-      nome: 'Espresso Macchiato Grande',
-      descricao:
-        'Nosso espresso duplo encorpado, "manchado" com uma generosa porção de leite vaporizado e espuma cremosa.',
+      nome: 'Espressos',
+      descricao: 'Dose do nosso café espresso encorpado e aromático.',
       preco: 10.9,
-      categoria: 'espresso',
+      categoria: 'espressos',
       imagem: '',
     },
-    {
-      id: 22,
-      nome: 'Espresso Macchiato',
-      descricao:
-        'O clássico espresso curto com um toque de espuma de leite cremosa para suavizar a intensidade.',
-      preco: 10.9,
-      categoria: 'espresso',
-      imagem: '',
-    },
-    {
-      id: 23,
-      nome: 'Espresso Panna Grande',
-      descricao:
-        'Dose dupla do nosso espresso marcante, finalizada com uma generosa camada de chantilly leve e adocicado.',
-      preco: 10.9,
-      categoria: 'espresso',
-      imagem: '',
-    },
-    {
-      id: 24,
-      nome: 'Espresso Doppio',
-      descricao:
-        'Duas doses do nosso melhor espresso, entregando mais intensidade, sabor e energia em uma única xícara.',
-      preco: 10.9,
-      categoria: 'espresso',
-      imagem: '',
-    },
-    {
-      id: 25,
-      nome: 'Espresso Grande',
-      descricao:
-        'Uma dose maior do nosso espresso encorpado, ideal para quem quer um pouco mais de café sem perder a força.',
-      preco: 10.9,
-      categoria: 'espresso',
-      imagem: '',
-    },
-    {
-      id: 26,
-      nome: 'Espresso Panna',
-      descricao:
-        'O tradicional espresso curto equilibrado com uma deliciosa e cremosa coroa de chantilly.',
-      preco: 10.9,
-      categoria: 'espresso',
-      imagem: '',
-    },
-  
+
     // Chás
   
     {
-      id: 27,
+      id: 22,
       nome: 'Chá Preto Quente',
       descricao:
         'Um chá preto encorpado e aromático, servido quente para aquecer e revigorar o dia.',
@@ -257,7 +211,7 @@ export const produtos = [
       imagem: '',
     },
     {
-      id: 28,
+      id: 23,
       nome: 'Chá Preto Gelado',
       descricao:
         'A intensidade do chá preto clássico servida bem gelada, refrescante e ideal para qualquer momento.',
@@ -266,7 +220,7 @@ export const produtos = [
       imagem: '',
     },
     {
-      id: 29,
+      id: 24,
       nome: 'Chá Verde Quente',
       descricao:
         'Delicado e revigorante, o nosso chá verde quente oferece um sabor leve e cheio de propriedades benéficas.',
@@ -275,7 +229,7 @@ export const produtos = [
       imagem: '',
     },
     {
-      id: 30,
+      id: 25,
       nome: 'Chá Verde Gelado',
       descricao:
         'Leve, aromático e refrescante, o chá verde preparado especialmente para ser saboreado com muito gelo.',
@@ -287,7 +241,7 @@ export const produtos = [
      // Salgados e Sanduíches
   
      {
-      id: 31,
+      id: 26,
       nome: 'Pão de Queijo Mineiro',
       descricao: 'Autêntico pão de queijo com casquinha crocante por fora, interior super macio e muito sabor de queijo.',
       preco: 11.90,
@@ -295,7 +249,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 32,
+      id: 27,
       nome: 'Mini Pão de Queijo Tradicional - 10 unidades',
       descricao: 'Porção com 10 deliciosos mini pães de queijo fresquinhos, perfeitos para compartilhar ou saborear a qualquer hora.',
       preco: 22.90,
@@ -303,7 +257,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 33,
+      id: 28,
       nome: 'Coxinha de Frango com Requeijão',
       descricao: 'Massa sequinha e crocante recheada com frango desfiado temperado e um cremoso toque de requeijão.',
       preco: 16.90,
@@ -311,7 +265,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 34,
+      id: 29,
       nome: 'Mini Coxinha de Frango com Requeijão - 5 unidades',
       descricao: 'Porção com 5 mini coxinhas crocantes por fora e recheadas com frango cremoso.',
       preco: 21.90,
@@ -319,7 +273,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 35,
+      id: 30,
       nome: 'Misto Quente',
       descricao: 'O clássico pão de forma tostado na chapa com muito queijo derretido e presunto suculento.',
       preco: 13.90,
@@ -327,7 +281,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 36,
+      id: 31,
       nome: 'Croissant de Queijo e Presunto',
       descricao: 'Massa folhada amanteigada, leve e crocante, recheada com uma generosa camada de presunto e queijo derretido.',
       preco: 18.90,
@@ -335,7 +289,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 37,
+      id: 32,
       nome: 'Croissant de Frango',
       descricao: 'Croissant de massa folhada dourada e crocante, recheado com frango desfiado levemente temperado.',
       preco: 18.90,
@@ -343,7 +297,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 38,
+      id: 33,
       nome: 'Croissant Tradicional',
       descricao: 'Clássico croissant francês com massa folhada leve, amanteigada e derretendo na boca.',
       preco: 15.90,
@@ -354,7 +308,7 @@ export const produtos = [
      //Sobremesas
   
      {
-      id: 39,
+      id: 34,
       nome: 'Red Velvet - Fatia',
       descricao: 'Clássico bolo de camadas avermelhadas, massa fofinha e levemente acacauada, coberto com um delicioso creme suave.',
       preco: 22.90,
@@ -362,7 +316,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 40,
+      id: 35,
       nome: 'Bolo de Chocolate - Fatia',
       descricao: 'Fatia generosa de bolo de chocolate intensamente macio, recheado e coberto com uma cremosa ganache.',
       preco: 22.90,
@@ -370,7 +324,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 41,
+      id: 36,
       nome: 'Brownie Espresso',
       descricao: 'Brownie de chocolate denso e molhadinho, com um toque especial de espresso que realça todo o sabor do cacau.',
       preco: 16.90,
@@ -378,7 +332,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 42,
+      id: 37,
       nome: 'Cookie de Baunilha',
       descricao: 'Biscoito amanteigado e macio por dentro, com deliciosas gotas de baunilha que derretem na boca.',
       preco: 10.90,
@@ -386,7 +340,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 43,
+      id: 38,
       nome: 'Cookie de Chocolate',
       descricao: 'Cookie crocante nas bordas e macio no interior, repleto de pedaços generosos de chocolate.',
       preco: 10.90,
@@ -394,7 +348,7 @@ export const produtos = [
       imagem: '',
      },
      {
-      id: 44,
+      id: 39,
       nome: 'Cookie de Morango',
       descricao: 'Biscoito doce e macio com um toque frutado e pedaços de morango que trazem frescor a cada mordida.',
       preco: 10.90,

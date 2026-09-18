@@ -1,20 +1,20 @@
-import {BrowserRouter, Routes, Route, Link} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Cardapio from "./pages/cardapio";
 
-import "./App.css"
-import Footer from "./components/Footer"
-import Navbar from "./components/Navbar"
-import Cardapio from "./data/cardapio"
-
-function App() {
+export default function App() {
   return (
-    <div>
-      <h1>Cafeteria - Trabalho da Faculdade</h1>
-      <p>Seja bem-vindo ao nosso e-commerce de café!</p>
-
+    <BrowserRouter>
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Cardapio />} />
+          <Route path="/cardapio" element={<Cardapio />} />
+        </Routes>
+      </main>
       <Footer />
-    </div>
-    
+    </BrowserRouter>
   );
 }
-
-export default App;
