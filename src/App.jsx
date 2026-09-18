@@ -1,10 +1,9 @@
-function App() {
+import Cardapio from './pages/cardapio';
+
+export default function App() {
   return (
-    <div>
-      <h1>Cafeteria - Trabalho da Faculdade</h1>
-      <p>Seja bem-vindo ao nosso e-commerce de café!</p>
-    </div>
+    <main>
+      <Cardapio />
+    </main>
   );
 }
-
-export default App;
