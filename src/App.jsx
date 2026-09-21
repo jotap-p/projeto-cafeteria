@@ -1,13 +1,22 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Cardapio from "./pages/cardapio";
 import Login from "./components/Login";
-function App() {
+
+export default function App() {
   return (
-    <div>
-      <h1>Cafeteria - Trabalho da Faculdade</h1>
-      <p>Seja bem-vindo ao nosso e-commerce de café!</p>
-    
-      <Login />
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Cardapio />} />
+          <Route path="/cardapio" element={<Cardapio />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </main>
+      <Footer />
+    </BrowserRouter>
   );
 }
-
-export default App;
