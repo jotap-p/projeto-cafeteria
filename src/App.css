@@ -16,3 +16,9 @@
     background-size: cover;
     background-position: center;
 }
+
+.rodape {
+    background-color: #547755;
+    color: #f0f0f0;
+    text-align: center;
+}

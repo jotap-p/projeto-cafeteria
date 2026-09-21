@@ -8,6 +8,7 @@ function Navbar (){
                 <Link to="/"> Início </Link>
                 <Link to="/cardapio"> Cardápio </Link>
                 <Link to="/carrinho">Carrinho</Link>
+                <Link to="/login"> Entrar </Link>
             </div>
         </nav>
     )
