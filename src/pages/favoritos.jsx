@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./favoritos.css";
 
 export default function Favoritos() {
   const [favoritos, setFavoritos] = useState([]);
