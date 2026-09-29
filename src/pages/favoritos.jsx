@@ -4,7 +4,7 @@ import "./favoritos.css";
 export default function Favoritos() {
   const [favoritos, setFavoritos] = useState([]);
 
-  if(favoritos.length === 0) 
+  if(favoritos.length === 0) {
   return (
     <div>
         <h1>Favoritos</h1>
@@ -14,7 +14,8 @@ export default function Favoritos() {
         </p>
     </div>
   );
-}
+  }
+
     
 return (
   <div>
@@ -31,5 +32,5 @@ return (
     )))}
   </div>
 );
-
+}
  

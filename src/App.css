@@ -22,3 +22,54 @@
     color: #f0f0f0;
     text-align: center;
 }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e2625;  
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .navbar-marca {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: #f5efe6;
+    text-decoration: none;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .navbar-links a {
+    color: #dcd7c9;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .navbar-links a:hover {
+    color: #547755; 
+    transform: translateY(-1px);
+  }
+  
+  /* Responsividade simples para celulares */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    
+    .navbar-links {
+      gap: 1rem;
+    }
+  }
