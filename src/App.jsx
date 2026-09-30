@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Cardapio from "./pages/cardapio";
 import Login from "./components/Login";
 import Registro from "./components/Registro";
+import EsquecerSenha from "./components/EsquecerSenha";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/cardapio" element={<Cardapio />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
+          <Route path="/esquecerSenha" element={<EsquecerSenha />} />
         </Routes>
       </main>
       <Footer />

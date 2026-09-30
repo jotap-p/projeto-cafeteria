@@ -60,7 +60,7 @@ const Login = () => {
                         Lembre de mim
                     </label>
 
-                    <a href="#">Esqueceu a senha?</a>
+                    <a href="/esquecerSenha">Esqueceu a senha?</a>
                 </div>
 
                 <button type="submit">Entrar</button>
