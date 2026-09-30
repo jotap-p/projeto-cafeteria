@@ -3,10 +3,9 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Cardapio from "./pages/cardapio";
-import Registro from "./components/Registro";
 import Login from "./components/Login";
 import Registro from "./components/Registro";
-import Favoritos from "./pages/favoritos";
+import EsquecerSenha from "./components/EsquecerSenha";
 
 export default function App() {
   return (
@@ -17,8 +16,8 @@ export default function App() {
           <Route path="/" element={<Cardapio />} />
           <Route path="/cardapio" element={<Cardapio />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/favoritos" element={<Favoritos />} />
           <Route path="/registro" element={<Registro />} />
+          <Route path="/esquecerSenha" element={<EsquecerSenha />} />
         </Routes>
       </main>
       <Footer />
