@@ -1,3 +1,7 @@
+import React from "react";
+import { FaUser, FaLock } from "react-icons/fa";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
@@ -59,6 +63,7 @@ const Login = () => {
                         Lembre de mim
                     </label>
 
+                    <a href="#">Esqueceu a senha?</a>
                     <Link to="/EsquecerSenha">Esqueceu a Senha?</Link>
                 </div>
 
@@ -67,6 +72,7 @@ const Login = () => {
                 <div className="signup-link">
                     <p>
                         Não tem uma conta?{" "}
+                        <a href="/registro">Registrar</a>
                         <Link to="/Registro">Registrar</Link>
                     </p>
                 </div>
