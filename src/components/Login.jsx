@@ -2,6 +2,9 @@ import React from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { FaUser, FaLock } from "react-icons/fa";
+import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -61,6 +64,7 @@ const Login = () => {
                     </label>
 
                     <a href="#">Esqueceu a senha?</a>
+                    <Link to="/EsquecerSenha">Esqueceu a Senha?</Link>
                 </div>
 
                 <button type="submit">Entrar</button>
@@ -69,6 +73,7 @@ const Login = () => {
                     <p>
                         Não tem uma conta?{" "}
                         <a href="/registro">Registrar</a>
+                        <Link to="/Registro">Registrar</Link>
                     </p>
                 </div>
 

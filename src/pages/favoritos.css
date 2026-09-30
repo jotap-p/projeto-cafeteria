@@ -1,0 +1,40 @@
+.favoritos {
+    width: 80%;
+    margin: 40px auto;
+}
+
+.favoritos h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.mensagem {
+    text-align: center;
+    color: #777;
+    margin-top: 100px;
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.produto {
+ border: 1px solid #ddd;
+ border-radius: 10px;
+ padding: 20px;
+}
+
+.produto h2 {
+    margin-bottom: 10px;
+}
+
+.produto p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.produto span {
+    font-weight: bold;
+}
