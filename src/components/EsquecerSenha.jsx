@@ -63,7 +63,7 @@ function EsquecerSenha() {
                     </div>
         
                     <button type="submit">
-                        Alterar Senha
+                        Alterar sua senha
                     </button>
         
                 </form>
