@@ -32,6 +32,36 @@ export function CardProduto({ produto }) {
 
   const precoFinal = produto.preco + acrescimo;
 
+  const alternarFavorito = () => {
+    const favoritosSalvos =
+
+    JSON.parse(localStorage.getItem('favoritos')) 
+    || [];
+
+    const jaFavoritado = favoritosSalvos.some(
+      (item) => item.id === produto.id 
+    );
+    let novosFavoritos;
+
+    if (jaFavoritado) {
+      novosFavoritos = favoritosSalvos.filter(
+        (item) => item.id !== produto.id
+      );
+    } else {
+      novosFavoritos = [...favoritosSalvos,produto];
+    }
+
+    localStorage.setItem(
+      'favoritos', 
+      JSON.stringify(novosFavoritos)
+    );
+    alert(
+      jaFavoritado
+      ? `${produto.nome} removido dos favoritos! `
+      : `${produto.nome} adicionado aos favoritos! `
+    );
+  };
+
   return (
     <div style={{ 
       border: '1px solid #e0e0e0', 
