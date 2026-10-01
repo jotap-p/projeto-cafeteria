@@ -128,6 +128,17 @@ export function CardProduto({ produto }) {
         >
           Adicionar
         </button>
+        <button
+  onClick={alternarFavorito}
+  style={{
+    background: 'none',
+    border: 'none',
+    fontSize: '24px',
+    cursor: 'pointer'
+  }}
+>
+  ❤️
+</button>
       </div>
     </div>
   );
