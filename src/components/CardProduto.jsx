@@ -34,13 +34,13 @@ export function CardProduto({ produto }) {
 
   const alternarFavorito = () => {
     const favoritosSalvos =
-
-    JSON.parse(localStorage.getItem('favoritos')) 
-    || [];
+  JSON.parse(localStorage.getItem('favoritos')) 
+  || [];
 
     const jaFavoritado = favoritosSalvos.some(
       (item) => item.id === produto.id 
     );
+
     let novosFavoritos;
 
     if (jaFavoritado) {
@@ -53,8 +53,8 @@ export function CardProduto({ produto }) {
 
     localStorage.setItem(
       'favoritos', 
-      JSON.stringify(novosFavoritos)
-    );
+      JSON.stringify(novosFavoritos));
+      
     alert(
       jaFavoritado
       ? `${produto.nome} removido dos favoritos! `
