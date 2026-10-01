@@ -5,9 +5,11 @@ import Footer from "./components/Footer";
 import Cardapio from "./pages/cardapio";
 import Login from "./components/Login";
 import Favoritos from "./pages/favoritos";
+import {FavoritosProvider} from "./FavoritosContext";
 
 export default function App() {
   return (
+    <FavoritosProvider>
     <BrowserRouter>
       <Navbar />
       <main>
@@ -20,5 +22,6 @@ export default function App() {
       </main>
       <Footer />
     </BrowserRouter>
+    </FavoritosProvider>
   );
 }

@@ -1,6 +1,15 @@
 import { useState } from 'react';
+import{ useFavoritos} from'../FavoritosContext';
 
 export function CardProduto({ produto }) {
+  const{ favoritos, alternarFavorito }
+  = useFavoritos();
+
+  const jaFavoritado =
+  favoritos.some(
+    (item)=>item.id === produto.id
+  );
+
   const [tamanho, setTamanho] = useState('padrao');
   const [variacaoEspresso, setVariacaoEspresso] = useState('tradicional');
 
@@ -31,36 +40,6 @@ export function CardProduto({ produto }) {
   }
 
   const precoFinal = produto.preco + acrescimo;
-
-  const alternarFavorito = () => {
-    const favoritosSalvos =
-  JSON.parse(localStorage.getItem('favoritos')) 
-  || [];
-
-    const jaFavoritado = favoritosSalvos.some(
-      (item) => item.id === produto.id 
-    );
-
-    let novosFavoritos;
-
-    if (jaFavoritado) {
-      novosFavoritos = favoritosSalvos.filter(
-        (item) => item.id !== produto.id
-      );
-    } else {
-      novosFavoritos = [...favoritosSalvos,produto];
-    }
-
-    localStorage.setItem(
-      'favoritos', 
-      JSON.stringify(novosFavoritos));
-      
-    alert(
-      jaFavoritado
-      ? `${produto.nome} removido dos favoritos! `
-      : `${produto.nome} adicionado aos favoritos! `
-    );
-  };
 
   return (
     <div style={{ 

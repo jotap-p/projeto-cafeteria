@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
+import { useFavoritos } from "../FavoritosContext";
 import "./favoritos.css";
 
 export default function Favoritos() {
-  const [favoritos, setFavoritos] = useState([]);
-
-  useEffect(() => {
-    const favoritosSalvos =
-      JSON.parse(localStorage.getItem("favoritos")) || [];
-
-    setFavoritos(favoritosSalvos);
-  }, []);
+  const {favoritos} = useFavoritos();
 
   if (favoritos.length === 0) {
     return (
