@@ -10,7 +10,7 @@ export function CardProduto({ produto }) {
   const permiteTamanho = !isEspresso && !isCha && [
     'bebidas-quentes',
     'bebidas-geladas',
-    'cafes-tradicionais'
+    'cafe-tradicional'
   ].includes(produto.categoria);
 
   // Cálculo de preço dinâmico
@@ -44,6 +44,19 @@ export function CardProduto({ produto }) {
       justifyContent: 'space-between'
     }}>
       <div>
+        <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+          <img 
+            src={produto.imagem || 'https://via.placeholder.com/200x200?text=Sem+Foto'} 
+            alt={produto.nome}
+            style={{ 
+              width: '100%', 
+              height: '200px', 
+              objectFit: 'contain',
+              borderRadius: '8px' 
+            }}
+          />
+        </div>
+
         <h3 style={{ margin: '0 0 8px 0' }}>{produto.nome}</h3>
         <p style={{ fontSize: '0.9rem', color: '#666', margin: '0 0 16px 0' }}>{produto.descricao}</p>
 
