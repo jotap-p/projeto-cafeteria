@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Cardapio from "./pages/cardapio";
 import Login from "./components/Login";
+import Registro from "./components/Registro";
+import EsquecerSenha from "./components/EsquecerSenha";
 import Favoritos from "./pages/favoritos";
 import {FavoritosProvider} from "./FavoritosContext";
 
@@ -17,6 +19,8 @@ export default function App() {
           <Route path="/" element={<Cardapio />} />
           <Route path="/cardapio" element={<Cardapio />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
+          <Route path="/esquecerSenha" element={<EsquecerSenha />} />
           <Route path="/favoritos" element={<Favoritos />} />
         </Routes>
       </main>
