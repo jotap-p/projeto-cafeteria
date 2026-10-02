@@ -1,36 +1,29 @@
-import { useState } from "react";
+import { useFavoritos } from "../FavoritosContext";
 import "./favoritos.css";
 
 export default function Favoritos() {
-  const [favoritos, setFavoritos] = useState([]);
+  const {favoritos} = useFavoritos();
 
-  if(favoritos.length === 0) {
-  return (
-    <div>
+  if (favoritos.length === 0) {
+    return (
+      <div>
         <h1>Favoritos</h1>
-
-        <p>
-            Voce ainda não possui favoritos.
-        </p>
-    </div>
-  );
+        <p>Você ainda não possui favoritos.</p>
+      </div>
+    );
   }
 
-    
-return (
-  <div>
-    <h1>Favoritos</h1>
+  return (
+    <div>
+      <h1>Favoritos</h1>
 
-    {favoritos.map((produto=>(
+      {favoritos.map((produto) => (
         <div key={produto.id}>
-            <h2>{produto.nome}</h2>
-
-            <p>{produto.descricao}</p>
-
-            <p>{produto.preco}</p>
-            </div>
-    )))}
-  </div>
-);
+          <h3>{produto.nome}</h3>
+          <p>{produto.categoria}</p>
+          <p>R$ {produto.preco.toFixed(2)}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
- 

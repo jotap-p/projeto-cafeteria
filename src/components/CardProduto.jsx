@@ -1,6 +1,15 @@
 import { useState } from 'react';
+import{ useFavoritos} from'../FavoritosContext';
 
 export function CardProduto({ produto }) {
+  const{ favoritos, alternarFavorito }
+  = useFavoritos();
+
+  const jaFavoritado =
+  favoritos.some(
+    (item)=>item.id === produto.id
+  );
+
   const [tamanho, setTamanho] = useState('padrao');
   const [variacaoEspresso, setVariacaoEspresso] = useState('tradicional');
 
@@ -111,6 +120,17 @@ export function CardProduto({ produto }) {
         >
           Adicionar
         </button>
+        <button
+  onClick={alternarFavorito}
+  style={{
+    background: 'none',
+    border: 'none',
+    fontSize: '24px',
+    cursor: 'pointer'
+  }}
+>
+  ❤️
+</button>
       </div>
     </div>
   );
