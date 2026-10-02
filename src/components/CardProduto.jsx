@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import{ useFavoritos} from'../FavoritosContext';
+import { useFavoritos } from '../Context/FavoritosContext';
+import { useCarrinho } from '../Context/CarrinhoContext';
 
 export function CardProduto({ produto }) {
   const{ favoritos, alternarFavorito }
   = useFavoritos();
+  const { adicionarAoCarrinho } 
+  = useCarrinho();
 
   const jaFavoritado =
   favoritos.some(
@@ -116,21 +119,49 @@ export function CardProduto({ produto }) {
         </strong>
         <button 
           style={{ padding: '8px 16px', background: '#00704A', color: '#fff', border: 'none', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold' }}
-          onClick={() => alert(`Adicionado: ${produto.nome} (${isEspresso ? variacaoEspresso : tamanho}) - R$ ${precoFinal.toFixed(2)}`)}
+          onClick={() => {
+            const usuarioLogado = localStorage.getItem("logado") === "true";
+
+            if (!usuarioLogado) {
+              alert("Por favor, entre ou crie uma conta para adicionar um item ao carrinho.");
+              return; 
+            }
+
+            const produtoParaCarrinho = {
+              ...produto, 
+              preco: precoFinal, 
+              nome: `${produto.nome} (${isEspresso ? variacaoEspresso : tamanho})`,
+              idUnico: Math.random()
+            };
+
+            adicionarAoCarrinho(produtoParaCarrinho);
+            
+
+            alert(`${produtoParaCarrinho.nome} foi adicionado ao carrinho!`);
+          }}
         >
           Adicionar
         </button>
         <button
-  onClick={alternarFavorito}
-  style={{
-    background: 'none',
-    border: 'none',
-    fontSize: '24px',
-    cursor: 'pointer'
-  }}
->
-  ❤️
-</button>
+          style={{
+            background: 'none',
+            border: 'none',
+            fontSize: '24px',
+            cursor: 'pointer'
+          }}
+          onClick={() => {
+            const usuarioLogado = localStorage.getItem("logado") === "true";
+
+            if (!usuarioLogado) {
+              alert("Por favor, entre ou crie uma conta para favoritar um item.");
+              return; 
+            }
+
+            alternarFavorito(produto);
+          }}
+        >
+          {jaFavoritado ? '❤️' : '🤍'}
+        </button>
       </div>
     </div>
   );

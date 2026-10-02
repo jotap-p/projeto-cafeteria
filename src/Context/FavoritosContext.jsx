@@ -25,10 +25,9 @@ favoritosAtuais.some(
     };
 
     return (
-        <FavoritosContext.Provider>
-   value={{ favoritos, alternarFavorito }}
-    {children}
-   </FavoritosContext.Provider>
+        <FavoritosContext.Provider value={{ favoritos, alternarFavorito }}>
+            {children}
+        </FavoritosContext.Provider>
     );
 }
 

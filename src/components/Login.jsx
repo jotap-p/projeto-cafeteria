@@ -20,6 +20,7 @@ const Login = () => {
             usuario.email === username &&
             usuario.senha === password
         ) {
+            localStorage.setItem("logado", "true");
             navigate("/cardapio");
         } else {
             alert("E-mail ou senha incorretos!");
