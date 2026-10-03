@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { produtos } from '../data/cardapio';
 import { CardProduto } from '../components/CardProduto';
 
 export default function Cardapio() {
-  // Define 'bebidas-quentes' como a categoria inicial, conforme sua ideia
   const [categoriaAtiva, setCategoriaAtiva] = useState('bebidas-quentes');
+  
+  const carrosselRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Mapeamento dos nomes amigáveis para os botões da barra de navegação
   const categorias = [
     { id: 'bebidas-quentes', label: 'Bebidas Quentes' },
     { id: 'bebidas-geladas', label: 'Bebidas Geladas' },
@@ -17,50 +20,86 @@ export default function Cardapio() {
     { id: 'sobremesas', label: 'Sobremesas' }
   ];
 
-  // Filtra a matriz bruta: só passa para a tela quem tiver a mesma categoria do botão clicado
   const produtosExibidos = produtos.filter((item) => item.categoria === categoriaAtiva);
 
-  return (
-    <div style={{ padding: '24px', fontFamily: 'sans-serif', maxWidth: '1200px', margin: '0 auto' }}>
-      <header style={{ textAlign: 'center', marginBottom: '32px' }}>
-        <h1>☕ Cardápio</h1>
-        <p>Escolha seus cafés e bebidas favoritas</p>
-      </header>
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - carrosselRef.current.offsetLeft);
+    setScrollLeft(carrosselRef.current.scrollLeft);
+  };
+  const handleMouseLeave = () => setIsDragging(false);
+  const handleMouseUp = () => setIsDragging(false);
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - carrosselRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    carrosselRef.current.scrollLeft = scrollLeft - walk;
+  };
 
-      {/* Barra de Navegação de Categorias */}
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        gap: '16px', 
-        marginBottom: '40px',
-        flexWrap: 'wrap' 
-      }}>
-        {categorias.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => setCategoriaAtiva(cat.id)}
-            style={{
-              padding: '10px 20px',
-              background: categoriaAtiva === cat.id ? '#00704A' : 'transparent',
-              color: categoriaAtiva === cat.id ? '#fff' : '#333',
-              border: categoriaAtiva === cat.id ? 'none' : '1px solid #ccc',
-              borderRadius: '20px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              transition: 'all 0.2s'
-            }}
-          >
-            {cat.label}
-          </button>
-        ))}
+  const rolarEsquerda = () => carrosselRef.current.scrollBy({ left: -200, behavior: 'smooth' });
+  const rolarDireita = () => carrosselRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+
+  return (
+    <div style={{ padding: '40px 5%', fontFamily: 'Helvetica Neue, sans-serif', maxWidth: '1400px', margin: '0 auto' }}>
+      
+      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2px', color: '#1a1a1a', margin: 0 }}>
+          O Nosso Cardápio
+        </h1>
+        <div style={{ width: '60px', height: '4px', backgroundColor: '#d9a05b', margin: '10px auto 0 auto' }}></div>
       </div>
 
-      {/* Grid de Produtos Filtrados */}
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', 
-        gap: '20px' 
-      }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '40px', borderBottom: '1px solid #eaeaea', paddingBottom: '15px' }}>
+        
+        <button onClick={rolarEsquerda} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#1a1a1a' }}>&#10094;</button>
+
+        <div 
+          ref={carrosselRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          style={{ 
+            display: 'flex', 
+            gap: '15px', 
+            overflowX: 'auto', 
+            scrollbarWidth: 'none', 
+            msOverflowStyle: 'none', 
+            cursor: isDragging ? 'grabbing' : 'grab',
+            scrollBehavior: isDragging ? 'auto' : 'smooth',
+            width: '100%'
+          }}
+        >
+          {categorias.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setCategoriaAtiva(cat.id)}
+              style={{
+                flexShrink: 0, 
+                padding: '10px 24px',
+                background: categoriaAtiva === cat.id ? '#1a1a1a' : '#f5f5f5',
+                color: categoriaAtiva === cat.id ? '#d9a05b' : '#666',
+                border: 'none',
+                borderRadius: '30px',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                textTransform: 'uppercase',
+                fontSize: '0.85rem',
+                letterSpacing: '1px',
+                transition: 'all 0.3s ease',
+              }}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        <button onClick={rolarDireita} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#1a1a1a' }}>&#10095;</button>
+
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '30px' }}>
         {produtosExibidos.map((item) => (
           <CardProduto key={item.id} produto={item} />
         ))}
