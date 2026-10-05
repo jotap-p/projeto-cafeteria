@@ -6,8 +6,6 @@ import Home from "./pages/Home";
 import Cardapio from "./pages/cardapio";
 import Carrinho from "./pages/carrinho";
 import Login from "./components/Login";
-import Registro from "./components/Registro";
-import EsquecerSenha from "./components/EsquecerSenha";
 import Favoritos from "./pages/favoritos";
 import FinalizarCompra from "./pages/FinalizarCompra";
 import { FavoritosProvider } from './Context/FavoritosContext';
@@ -26,8 +24,6 @@ export default function App() {
               <Route path="/cardapio" element={<Cardapio />} />
               <Route path="/carrinho" element={<Carrinho />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/registro" element={<Registro />} />
-              <Route path="/esquecerSenha" element={<EsquecerSenha />} />
               <Route path="/favoritos" element={<Favoritos />} />
               <Route path="/finalizar-compra" element={<FinalizarCompra />} />
             </Routes>

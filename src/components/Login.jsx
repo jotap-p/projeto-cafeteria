@@ -1,44 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+function Login() {
+    const [usuario, setUsuario] = useState("");
+    const [senha, setSenha] = useState("");
 
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    function entrar(event) {
         event.preventDefault();
 
-        const usuario = JSON.parse(localStorage.getItem("usuario"));
-
-        if (
-            usuario &&
-            usuario.email === username &&
-            usuario.senha === password
-        ) {
-            localStorage.setItem("logado", "true");
+        if (usuario === "cliente" && senha === "1234") {
             navigate("/cardapio");
         } else {
-            alert("E-mail ou senha incorretos!");
+            alert("Usuário ou senha incorretos!");
         }
-    };
+    }
 
     return (
         <div className="container">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={entrar}>
 
-                <h1>Acesse a Cafeteria</h1>
+                <h1>Login</h1>
 
                 <div className="input-field">
                     <input
-                        type="email"
-                        placeholder="E-mail"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        type="text"
+                        placeholder="Usuário"
+                        value={usuario}
+                        onChange={(e) => setUsuario(e.target.value)}
                         required
                     />
                     <FaUser className="icon" />
@@ -48,34 +40,18 @@ const Login = () => {
                     <input
                         type="password"
                         placeholder="Senha"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={senha}
+                        onChange={(e) => setSenha(e.target.value)}
                         required
                     />
                     <FaLock className="icon" />
                 </div>
 
-                <div className="recall-forget">
-                    <label>
-                        <input type="checkbox" />
-                        Lembre de mim
-                    </label>
-
-                    <a href="/esquecerSenha">Esqueceu a senha?</a>
-                </div>
-
                 <button type="submit">Entrar</button>
-
-                <div className="signup-link">
-                    <p>
-                        Não tem uma conta?{" "}
-                        <a href="/registro">Registrar</a>
-                    </p>
-                </div>
 
             </form>
         </div>
     );
-};
+}
 
 export default Login;
