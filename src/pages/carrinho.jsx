@@ -15,25 +15,20 @@ export default function Carrinho() {
 
   if (carrinho.length === 0) {
     return (
-      <div style={{ padding: '40px 5%', fontFamily: 'Helvetica Neue, sans-serif', maxWidth: '1400px', margin: '0 auto', minHeight: '60vh' }}>
-        <div style={{ marginBottom: '40px' }}>
-          <h1 style={{ fontSize: '2.5rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2px', color: '#1a1a1a', borderLeft: '5px solid #d9a05b', paddingLeft: '15px', margin: 0 }}>
+      <div className="carrinho-vazio-container">
+        <div className="carrinho-cabecalho">
+          <h1 className="carrinho-titulo">
             Carrinho
           </h1>
         </div>
-        <div style={{ textAlign: 'center', padding: '60px 0', color: '#666' }}>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '15px', fontWeight: 'bold', color: '#1a1a1a' }}>
+        <div className="carrinho-vazio-mensagem">
+          <h2 className="carrinho-vazio-h2">
             O seu carrinho está vazio.
           </h2>
-          <p style={{ marginBottom: '30px', fontSize: '1.1rem' }}>
+          <p className="carrinho-vazio-p">
             Ainda não escolheu nenhuma bebida para acompanhar o seu dia.
           </p>
-          <Link 
-            to="/cardapio" 
-            style={{ display: 'inline-block', padding: '12px 35px', background: '#1a1a1a', color: '#fff', textDecoration: 'none', borderRadius: '30px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', transition: 'background 0.2s ease' }}
-            onMouseOver={(e) => e.currentTarget.style.background = '#d9a05b'}
-            onMouseOut={(e) => e.currentTarget.style.background = '#1a1a1a'}
-          >
+          <Link to="/cardapio" className="btn-voltar-cardapio">
             Ver Cardápio
           </Link>
         </div>
@@ -64,31 +59,26 @@ export default function Carrinho() {
     navigate('/finalizar-compra', { state: dadosDoPedido }); 
   };
 
-  const inputStyle = { width: '100%', padding: '12px', borderRadius: '0', border: '1px solid #ccc', borderBottom: '2px solid #1a1a1a', backgroundColor: '#fff', color: '#1a1a1a', outline: 'none', fontFamily: 'inherit', fontSize: '0.95rem' };
-  const labelStyle = { display: 'block', marginBottom: '8px', color: '#888', fontWeight: 'bold', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px' };
-
   return (
-    <div style={{ padding: '40px 5%', fontFamily: 'Helvetica Neue, sans-serif', maxWidth: '1000px', margin: '0 auto', color: '#1a1a1a' }}>
+    <div className="carrinho-container">
       
-      <div style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2px', color: '#1a1a1a', borderLeft: '5px solid #d9a05b', paddingLeft: '15px', margin: 0 }}>
+      <div className="carrinho-cabecalho">
+        <h1 className="carrinho-titulo">
           Carrinho
         </h1>
       </div>
       
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginTop: '20px' }}>
+      <div className="carrinho-lista">
         {carrinho.map((produto) => (
-          <div key={produto.idUnico} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #eaeaea', paddingBottom: '15px' }}>
-            <span style={{ fontSize: '1.1rem', fontWeight: 'bold', textTransform: 'uppercase' }}>{produto.nome}</span>
+          <div key={produto.idUnico} className="carrinho-item">
+            <span className="carrinho-item-nome">{produto.nome}</span>
             
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-              <span style={{ fontWeight: '900', fontSize: '1.2rem' }}>R$ {produto.preco.toFixed(2)}</span>
+            <div className="carrinho-item-detalhes">
+              <span className="carrinho-item-preco">R$ {produto.preco.toFixed(2)}</span>
               
               <button 
                 onClick={() => removerDoCarrinho(produto.idUnico)}
-                style={{ background: 'transparent', color: '#c0392b', border: '1px solid #c0392b', padding: '6px 15px', borderRadius: '30px', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', transition: 'all 0.2s ease' }}
-                onMouseOver={(e) => { e.currentTarget.style.background = '#c0392b'; e.currentTarget.style.color = '#fff'; }}
-                onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#c0392b'; }}
+                className="btn-remover-item"
               >
                 Remover
               </button>
@@ -97,60 +87,60 @@ export default function Carrinho() {
         ))}
       </div>
 
-      <h2 style={{ textAlign: 'right', marginTop: '30px', color: '#1a1a1a', fontSize: '1.8rem', fontWeight: '900' }}>
-        Total: <span style={{ color: '#d9a05b' }}>R$ {valorTotal.toFixed(2)}</span>
+      <h2 className="carrinho-total-wrapper">
+        Total: <span className="carrinho-total-valor">R$ {valorTotal.toFixed(2)}</span>
       </h2>
 
-      <form onSubmit={handleFinalizar} style={{ background: '#f9f9f9', padding: '40px', borderRadius: '12px', marginTop: '40px', border: '1px solid #eaeaea', boxShadow: '0 10px 30px rgba(0,0,0,0.03)' }}>
+      <form onSubmit={handleFinalizar} className="carrinho-form">
         
-        <h3 style={{ marginBottom: '25px', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '1.2rem' }}>Dados do Cliente</h3>
+        <h3 className="carrinho-form-titulo">Dados do Cliente</h3>
         
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+        <div className="carrinho-grid-dupla">
           <div>
-            <label style={labelStyle}>Nome Completo</label>
-            <input type="text" placeholder="Ex: João Silva" value={nome} onChange={(e) => setNome(e.target.value)} style={inputStyle} />
+            <label className="carrinho-label">Nome Completo</label>
+            <input type="text" placeholder="Ex: João Silva" value={nome} onChange={(e) => setNome(e.target.value)} className="carrinho-input" />
           </div>
           <div>
-            <label style={labelStyle}>Telefone</label>
-            <input type="text" placeholder="(XX) XXXXX-XXXX" value={telefone} onChange={(e) => setTelefone(e.target.value)} style={inputStyle} />
+            <label className="carrinho-label">Telefone</label>
+            <input type="text" placeholder="(XX) XXXXX-XXXX" value={telefone} onChange={(e) => setTelefone(e.target.value)} className="carrinho-input" />
           </div>
         </div>
 
-        <h3 style={{ marginBottom: '25px', color: '#1a1a1a', paddingTop: '20px', borderTop: '1px solid #eaeaea', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '1.2rem' }}>Opções de Entrega</h3>
+        <h3 className="carrinho-form-titulo-divisor">Opções de Entrega</h3>
         
-        <div style={{ display: 'flex', gap: '30px', marginBottom: '25px', color: '#1a1a1a', fontWeight: '500' }}>
-          <label style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <input type="radio" value="entrega" checked={metodo === 'entrega'} onChange={() => setMetodo('entrega')} style={{ accentColor: '#1a1a1a', transform: 'scale(1.2)' }} />
+        <div className="carrinho-opcoes-entrega">
+          <label className="carrinho-radio-label">
+            <input type="radio" value="entrega" checked={metodo === 'entrega'} onChange={() => setMetodo('entrega')} className="carrinho-radio-input" />
             Entregar em casa
           </label>
-          <label style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <input type="radio" value="retirada" checked={metodo === 'retirada'} onChange={() => setMetodo('retirada')} style={{ accentColor: '#1a1a1a', transform: 'scale(1.2)' }} />
+          <label className="carrinho-radio-label">
+            <input type="radio" value="retirada" checked={metodo === 'retirada'} onChange={() => setMetodo('retirada')} className="carrinho-radio-input" />
             Retirar na loja
           </label>
         </div>
 
         {metodo === 'entrega' && (
-          <div style={{ marginBottom: '20px' }}>
-            <label style={labelStyle}>Endereço Completo</label>
-            <input type="text" placeholder="Ex: Av. Paulista, 1578 - Apto 32" value={endereco} onChange={(e) => setEndereco(e.target.value)} style={inputStyle} />
+          <div className="carrinho-form-espacamento">
+            <label className="carrinho-label">Endereço Completo</label>
+            <input type="text" placeholder="Ex: Av. Paulista, 1578 - Apto 32" value={endereco} onChange={(e) => setEndereco(e.target.value)} className="carrinho-input" />
           </div>
         )}
 
-        <div style={{ marginBottom: '20px' }}>
-          <label style={labelStyle}>Observações Especiais (Opcional)</label>
+        <div className="carrinho-form-espacamento">
+          <label className="carrinho-label">Observações Especiais (Opcional)</label>
           <textarea 
             placeholder="Alguma restrição ou pedido especial?" 
             value={observacao} 
             onChange={(e) => setObservacao(e.target.value)} 
             rows="2" 
-            style={{ ...inputStyle, resize: 'vertical' }} 
+            className="carrinho-textarea" 
           />
         </div>
 
-        <h3 style={{ marginBottom: '25px', color: '#1a1a1a', paddingTop: '20px', borderTop: '1px solid #eaeaea', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '1.2rem' }}>Pagamento</h3>
+        <h3 className="carrinho-form-titulo-divisor">Pagamento</h3>
         
-        <div style={{ marginBottom: '35px' }}>
-          <select value={pagamento} onChange={(e) => setPagamento(e.target.value)} style={{...inputStyle, cursor: 'pointer'}}>
+        <div className="carrinho-select-wrapper">
+          <select value={pagamento} onChange={(e) => setPagamento(e.target.value)} className="carrinho-select">
             <option value="">Selecione a forma de pagamento...</option>
             <option value="Pix">Pix (Recomendado)</option>
             <option value="Cartão de Crédito">Cartão de Crédito</option>
@@ -159,12 +149,7 @@ export default function Carrinho() {
           </select>
         </div>
 
-        <button 
-          type="submit" 
-          style={{ width: '100%', padding: '18px', background: '#1a1a1a', color: 'white', fontSize: '1.1rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', cursor: 'pointer', border: 'none', borderRadius: '30px', transition: 'background 0.3s ease' }}
-          onMouseOver={(e) => e.currentTarget.style.background = '#d9a05b'}
-          onMouseOut={(e) => e.currentTarget.style.background = '#1a1a1a'}
-        >
+        <button type="submit" className="btn-confirmar-pedido">
           Confirmar Pedido
         </button>
       </form>

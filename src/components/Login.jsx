@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
 
 function Login() {
     const [usuario, setUsuario] = useState("");
@@ -12,7 +11,8 @@ function Login() {
     function entrar(event) {
         event.preventDefault();
 
-        if (usuario === "cliente" && senha === "1234") {
+        if (usuario === "cliente" && senha === "kroma2026") {
+            localStorage.setItem("logado", "true");
             navigate("/cardapio");
         } else {
             alert("Usuário ou senha incorretos!");
@@ -20,12 +20,12 @@ function Login() {
     }
 
     return (
-        <div className="container">
+        <div className="login-container">
             <form onSubmit={entrar}>
 
                 <h1>Login</h1>
 
-                <div className="input-field">
+                <div className="login-input-field">
                     <input
                         type="text"
                         placeholder="Usuário"
@@ -36,7 +36,7 @@ function Login() {
                     <FaUser className="icon" />
                 </div>
 
-                <div className="input-field">
+                <div className="login-input-field">
                     <input
                         type="password"
                         placeholder="Senha"
@@ -44,10 +44,15 @@ function Login() {
                         onChange={(e) => setSenha(e.target.value)}
                         required
                     />
-                    <FaLock className="icon" />
+                        <FaLock className="icon" />
                 </div>
 
                 <button type="submit">Entrar</button>
+
+                <p className="login-dica">
+                    Acesso para avaliação: <br/>
+                    Usuário: <strong>cliente</strong> | Senha: <strong>kroma2026</strong>
+                </p>
 
             </form>
         </div>
