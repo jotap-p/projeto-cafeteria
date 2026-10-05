@@ -1,163 +1,119 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap');
 
 .container {
-    width: 380px;
-    background-color: #F3E9D2;
-    backdrop-filter: blur(10px);
-    border: 2px solid #8B6F47;
-    padding: 30px;
-    border-radius: 10px;
-    margin: 25px auto;
+    width: 100%;
+    min-height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 40px 20px;
+    box-sizing: border-box;
 }
+
+/* CAIXA DO LOGIN */
+.container form {
+    width: 380px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
 /* TÍTULO */
 .container h1 {
     text-align: center;
-    font-size: 30px;
-    color: #5C4033;
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    color: #1a1a1a;
+    margin-bottom: 30px;
 }
 
-/* CAMPOS DE E-MAIL E SENHA */
+/* CAMPOS */
 .container .input-field {
     position: relative;
     width: 100%;
     height: 50px;
-    margin: 20px auto;
+    margin: 20px 0;
 }
 
 .input-field input {
     width: 100%;
     height: 100%;
-    background-color: #FFF9ED;
+    background-color: #f5f5f5;
     outline: none;
-    border: 2px solid #A9B388;
-    border-radius: 40px;
-    font-size: 16px;
-    color: #5C4033;
-    padding: 20px 25px;
+    border: 1px solid #c9c9c9;
+    border-radius: 30px;
+    font-size: 15px;
+    color: #1a1a1a;
+    padding: 0 50px 0 20px;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* TEXTO DENTRO DOS CAMPOS */
+/* CAMPO SELECIONADO */
+.input-field input:focus {
+    border: 1px solid #d9a05b;
+}
+
+/* PLACEHOLDER */
 .input-field input::placeholder {
-    color: #8B6F47;
+    color: #777;
 }
 
 /* ÍCONES */
 .input-field .icon {
     position: absolute;
-    right: 25px;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 18px;
-    color: #5F6F52;
+    font-size: 17px;
+    color: #8b5e3c;
 }
 
-/* LEMBRE DE MIM + ESQUECEU A SENHA */
-.container .recall-forget {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-}
-
-.recall-forget label {
-
-    color: #5C4033;
-}
-
-.recall-forget input {
-    margin-right: 5px;
-}
-
-.recall-forget a,
-
-.signup-link p a {
-    color: #5F6F52;
-    text-decoration: none;
-}
-
-.recall-forget a:hover,
-
-.signup-link p a:hover {
-    text-decoration: underline;
-}
-
-/* BOTÃO ENTRAR / CADASTRAR */
+/* BOTÃO */
 .container button {
     width: 100%;
     height: 50px;
-    background-color: #5F6F52;
-    color: #fff;
+    margin-top: 10px;
+    background-color: #1a1a1a;
+    color: #ffffff;
     border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(92, 64, 51, 0.2);
+    border-radius: 30px;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
-    font-family: 'Poppins', serif;
-    text-shadow: none;
-}
-
-/* ÁREA DO REGISTRO */
-.container .signup-link {
-    font-size: 15px;
-    text-align: center;
-    margin: 15px;
     font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
 }
 
-.signup-link p {
-    color: #5C4033;
+/* EFEITO DO BOTÃO */
+.container button:hover {
+    background-color: #d9a05b;
+    color: #1a1a1a;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* TIRA O OLHINHO PADRÃO DO NAVEGADOR */
+/* REMOVE O OLHINHO PADRÃO DO NAVEGADOR 
 input[type="password"]::-ms-reveal {
     display: none;
-}
+*/
 
-.navbar {
-    background-color: #F3E9D2;
-    padding: 12px 0 15px;
-    text-align: center;
-    border-bottom: 1px solid #A9B388;
-    font-family: 'Poppins', sans-serif;
-}
+/* RESPONSIVO */
+@media (max-width: 500px) {
+    .container {
+        padding: 30px 15px;
+    }
 
-.navbar-marca {
-    display: block;
-    color: #5C4033;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    font-family: 'Playfair Display', serif;
-}
+    .container form {
+        width: 100%;
+        padding: 30px 20px;
+    }
 
-.navbar-links {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-}
-
-.navbar-links a {
-    color: #5F6F52;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-}
-
-.navbar-links a:hover {
-    color: #8B6F47;
-}
-
-.navbar,
-.navbar-marca,
-.navbar-links,
-.navbar-links a,
-.container h1,
-.container p,
-.container label,
-.container button {
-    text-shadow: none;
-    filter: none;
+    .container h1 {
+        font-size: 30px;
+    }
 }
